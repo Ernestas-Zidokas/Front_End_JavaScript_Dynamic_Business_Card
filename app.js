@@ -40,33 +40,14 @@ document.querySelector('#submit').addEventListener('click', (event)=>{
 
   function card(data) {
     let container = document.createElement('div');
-    container.classList.add("card");
-    const credentials = [];
+    container.classList.add('card');
+    //Creates HTMl element with given information and pushes it into array to insert into parent node
 
-    let p_name = document.createElement('p');
-    p_name.textContent = 'Name: ' + data.name;
-    credentials.push(p_name);
-
-    let p_lastname = document.createElement('p');
-    p_lastname.textContent = 'Last Name: ' + data.lastname;
-    credentials.push(p_lastname);
-
-    let p_email = document.createElement('p');
-    p_email.textContent = 'Email: ' + data.email;
-    credentials.push(p_email);
-
-    let p_phone = document.createElement('p');
-    p_phone.textContent = 'Phone Nr.: ' + data.phone;
-    credentials.push(p_phone);
-
-    let p_description = document.createElement('p');
-    p_description.textContent = 'Description: ' + data.description;
-    credentials.push(p_description);
-
-    credentials.forEach((para)=>{
-      container.appendChild(para);
-    });
-
+    container.appendChild(createHTMLElement('p', data.name, 'Name: '));
+    container.appendChild(createHTMLElement('p', data.lastname, 'Last name: '));
+    container.appendChild(createHTMLElement('p', data.email, 'Email: '));
+    container.appendChild(createHTMLElement('p', data.phone, 'Phone: '));
+    container.appendChild(createHTMLElement('p', data.description, 'Description: '));
     document.querySelector('#card').appendChild(container);
   };
 
@@ -100,4 +81,10 @@ document.querySelector('#submit').addEventListener('click', (event)=>{
     if(cardElement){
       cardElement.parentNode.removeChild(cardElement);
     }
+  }
+
+  function createHTMLElement(tag, userData, string) {
+    let element = document.createElement(tag);
+    element.textContent = string + userData;
+    return element;
   }
