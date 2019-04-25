@@ -1,0 +1,8 @@
+.card {
+  display: inline-block;
+  border: 1px solid black;
+  background-color: yellow;
+  min-width: 400px;
+  min-height: 200px;
+  text-align: center;
+}
