@@ -14,10 +14,6 @@ document.querySelector('#submit').addEventListener('click', (event)=>{
     window.localStorage.setItem('userInput', JSON.stringify(credentialsObejct));
   })
 
-  function getUserInput(id) {
-    return document.querySelector(id).value;
-  }
-
   window.addEventListener('load', (event)=>{
     let data = window.localStorage.getItem('userInput');
 
@@ -41,8 +37,8 @@ document.querySelector('#submit').addEventListener('click', (event)=>{
   function card(data) {
     let container = document.createElement('div');
     container.classList.add('card');
+    
     //Creates HTMl element with given information and pushes it into array to insert into parent node
-
     container.appendChild(createHTMLElement('p', data.name, 'Name: '));
     container.appendChild(createHTMLElement('p', data.lastname, 'Last name: '));
     container.appendChild(createHTMLElement('p', data.email, 'Email: '));
@@ -81,6 +77,10 @@ document.querySelector('#submit').addEventListener('click', (event)=>{
     if(cardElement){
       cardElement.parentNode.removeChild(cardElement);
     }
+  }
+
+  function getUserInput(id) {
+    return document.querySelector(id).value;
   }
 
   function createHTMLElement(tag, userData, string) {
